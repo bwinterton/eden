@@ -35,7 +35,7 @@ func NewContext(w http.ResponseWriter, r *http.Request, p httprouter.Params, mid
 // like and then the middleware will go on to finish the chain before completing
 // the code past the c.Next() call
 func (c *Context) Next() {
-	for c.index < len(c.middleware) {
+	for c.index < len(c.middleware)-1 {
 		c.index++                // increment right from the get go to get the next level
 		c.middleware[c.index](c) // call the next level of middleware
 	}
