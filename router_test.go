@@ -67,13 +67,13 @@ func TestDELETE(t *testing.T) {
 	}
 }
 
-func TestUPDATE(t *testing.T) {
-	method := "UPDATE"
+func TestPUT(t *testing.T) {
+	method := "PUT"
 	path := "/"
 	testFunc := func(c *Context) {}
 
 	r := New()
-	r.UPDATE(path, testFunc)
+	r.PUT(path, testFunc)
 	handler, _, _ := r.router.Lookup(method, path)
 
 	if handler == nil {

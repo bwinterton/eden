@@ -45,6 +45,6 @@ func (r *Router) DELETE(path string, mid ...Middleware) {
 }
 
 // UPDATE is an alias for router.Register("UPDATE", path, middleware)
-func (r *Router) UPDATE(path string, mid ...Middleware) {
-	r.Register("UPDATE", path, mid...)
+func (r *Router) PUT(path string, mid ...Middleware) {
+	r.Register("PUT", path, mid...)
 }
