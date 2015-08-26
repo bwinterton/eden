@@ -2,6 +2,15 @@ package eden
 
 import "encoding/json"
 
+type Response struct {
+	Status string      `json:"status"`
+	Data   interface{} `json:"data"`
+}
+
+func (c *Context) Respond(code int, res Response) {
+	c.WriteJSON(code, res)
+}
+
 // WriteJSON writes the given code and data to the client
 func (c *Context) WriteJSON(code int, data interface{}) {
 	b, err := json.Marshal(data)

@@ -51,21 +51,11 @@ func (c *Context) abort() {
 	c.index = len(c.middleware) // if c.index == len(c.middleware) then the for loop in next will not execute further
 }
 
-// Fail aborts the context middleware execution and then writes the given code
-// to the header of the response.
-func (c *Context) Fail(code int) {
-	c.abort()
-	c.Response.WriteHeader(code)
-}
-
-// FailPretty aborts the context middleware execution and then writes the given
+// Fail aborts the context middleware execution and then writes the given
 // code and message to the response.
-func (c *Context) FailPretty(code int, m string) {
-	type errorMessage struct {
-		success bool   `json:"success"`
-		message string `json:"error"`
-	}
+func (c *Context) Fail(code int, m string) {
+	c.abort()
 
-	e := errorMessage{false, m}
-	c.WriteJSON(code, e)
+	e := Response{"ERROR", m}
+	c.Respond(code, e)
 }
