@@ -6,7 +6,7 @@ import (
 	"github.com/julienschmidt/httprouter"
 )
 
-// Struct to represent the router
+// Router represents the eden router
 type Router struct {
 	// The httprouter Router
 	router *httprouter.Router
@@ -44,7 +44,7 @@ func (r *Router) DELETE(path string, mid ...Middleware) {
 	r.Register("DELETE", path, mid...)
 }
 
-// UPDATE is an alias for router.Register("UPDATE", path, middleware)
+// PUT is an alias for router.Register("UPDATE", path, middleware)
 func (r *Router) PUT(path string, mid ...Middleware) {
 	r.Register("PUT", path, mid...)
 }
