@@ -33,6 +33,7 @@ func (r *Router) Run(address string) error {
 
 // RunTLS runs a TLS server listening on the given address with the given cert and key
 func (r *Router) RunTLS(address string, cert string, key string) error {
+	log.Printf("Starting TLS server on %s", address)
 	if err := http.ListenAndServeTLS(address, cert, key, r); err != nil {
 		return err
 	}
