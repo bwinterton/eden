@@ -1,6 +1,7 @@
 package eden
 
 import (
+	"log"
 	"net/http"
 
 	"github.com/julienschmidt/httprouter"
@@ -22,9 +23,11 @@ func (r *Router) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 
 // Run runs the server listening on the given address
 func (r *Router) Run(address string) error {
+	log.Printf("Starting server on %s", address)
 	if err := http.ListenAndServe(address, r); err != nil {
 		return err
 	}
+
 	return nil
 }
 
