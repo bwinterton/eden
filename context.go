@@ -13,6 +13,7 @@ type Context struct {
 	Request    *http.Request
 	Params     httprouter.Params
 	Data       map[string]interface{}
+	Status     int
 	middleware []Middleware
 	index      int // used to keep track of which level of the middleware we are currently on.
 }
@@ -56,6 +57,6 @@ func (c *Context) abort() {
 func (c *Context) Fail(code int, m string) {
 	c.abort()
 
-	e := Response{"ERROR", m}
+	e := DefaultResponse{"ERROR", m}
 	c.Respond(code, e)
 }

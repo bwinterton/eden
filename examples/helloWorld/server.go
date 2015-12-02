@@ -12,7 +12,7 @@ func main() {
 	r.Use(middleware.LogRequest)
 
 	r.GET("/hello", func(c *eden.Context) {
-		c.Respond(200, eden.Response{Status: "OK", Data: "Hello World!"})
+		c.Respond(200, eden.DefaultResponse{Status: "OK", Data: "Hello World!"})
 	})
 
 	r.Run(":8080")

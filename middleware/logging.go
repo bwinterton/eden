@@ -15,5 +15,5 @@ func LogRequest(c *eden.Context) {
 	c.Next()
 
 	duration := time.Since(start)
-	log.Printf("%s: %s | Request took %f seconds", c.Request.Method, c.Request.RequestURI, duration.Seconds())
+	log.Printf("%s: %s | Status: %d | Request took %f miliseconds", c.Request.Method, c.Request.RequestURI, c.Status, duration.Seconds()*100)
 }

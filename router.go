@@ -44,7 +44,7 @@ func (r *Router) DELETE(path string, mid ...Middleware) {
 	r.Register("DELETE", path, mid...)
 }
 
-// PUT is an alias for router.Register("UPDATE", path, middleware)
+// PUT is an alias for router.Register("PUT", path, middleware)
 func (r *Router) PUT(path string, mid ...Middleware) {
 	r.Register("PUT", path, mid...)
 }
